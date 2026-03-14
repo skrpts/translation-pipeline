@@ -5,7 +5,7 @@ title: Translation
 description: "Translates text between languages whilst maintaining tone and cultural context"
 tags: [Tested]
 connections:
-  - target: anthropic-claude
+  - target: llm-service
     type: runs_on
 ---
 

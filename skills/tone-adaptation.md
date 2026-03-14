@@ -5,7 +5,7 @@ title: Tone Adaptation
 description: "Rewrites text to match a specified tone whilst preserving meaning"
 tags: [Tested]
 connections:
-  - target: anthropic-claude
+  - target: llm-service
     type: runs_on
 ---
 
