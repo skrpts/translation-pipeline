@@ -15,4 +15,8 @@ Translates text from one language to another whilst maintaining the original ton
 
 ## Prompt
 
-Translate the following text from {{source_language}} to {{target_language}}. Maintain tone and formatting.
+Translate the following text from {{input.source_language}} to {{input.target_language}}. Maintain tone and formatting.
+
+### Inputs
+
+{{input.source_text}}

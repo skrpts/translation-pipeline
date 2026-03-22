@@ -2,7 +2,7 @@
 name: "translation-pipeline"
 display_name: "Translation Pipeline"
 description: "Translates and adapts content for different locales and audiences"
-version: "1.0.0"
+version: "1.2.0"
 engine: ">=1.0.0"
 
 # --- Attribution ---

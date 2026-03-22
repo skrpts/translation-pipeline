@@ -72,7 +72,7 @@ No specific AI provider or API key is required beyond your configured skrptiq LL
 To test this workflow immediately after import:
 
 ```
-Source text: "Our cutting-edge platform helps teams ship faster without breaking a sweat."
+Source text: "Our platform helps teams ship faster without breaking a sweat."
 Source language: English
 Target language: French
 Target audience: Enterprise software buyers in France, professional tone
