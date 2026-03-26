@@ -17,4 +17,6 @@ Rewrites text to match a specified tone whilst preserving all factual content an
 
 Rewrite the following text to match the tone appropriate for the target audience. Preserve all factual content and meaning.
 
-Use the translated output from the previous stage as the text to adjust. The target audience is: {{input.target_audience}}
+**Translated text:** {{steps.translate-text.output}}
+
+**Target audience:** {{input.target_audience}}
