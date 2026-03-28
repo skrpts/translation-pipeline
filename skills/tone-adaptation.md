@@ -7,6 +7,10 @@ tags: [Tested]
 connections:
   - target: llm-service
     type: runs_on
+  - target: company-style-guide
+    type: references
+  - target: brand-guidelines
+    type: references
 ---
 
 ## Capability
