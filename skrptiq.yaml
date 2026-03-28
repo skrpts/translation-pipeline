@@ -1,4 +1,5 @@
 # --- Identity ---
+id: "3b6294b9-1c0a-47f8-97d2-3839689dd338"
 name: "translation-pipeline"
 display_name: "Translation Pipeline"
 description: "Translates and adapts content for different locales and audiences"
