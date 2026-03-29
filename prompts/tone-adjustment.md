@@ -3,7 +3,7 @@ type: prompt
 id: tone-adjustment
 title: Tone Adjustment
 description: "Core prompt for rewriting text to match a target tone"
-tags: [Production, utility:translation, quality:standards]
+tags: [Production, Translation, Writing]
 connections:
   - target: tone-adaptation
     type: derived_from

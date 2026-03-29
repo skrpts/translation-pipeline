@@ -3,7 +3,7 @@ type: workflow
 id: translation-pipeline
 title: Translation Pipeline
 description: "Translates and adapts content for different locales and audiences"
-tags: [Production, utility:translation, quality:standards]
+tags: [Production, Audience, Translation]
 connections:
   - target: translation
     type: uses
