@@ -3,7 +3,7 @@ type: prompt
 id: translate-text
 title: Translate Text
 description: "Core prompt for translating text between languages"
-tags: [Production]
+tags: [Production, utility:translation, quality:standards]
 connections:
   - target: translation
     type: derived_from
