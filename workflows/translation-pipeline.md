@@ -17,6 +17,8 @@ connections:
     type: runs_on
   - target: company-style-guide
     type: references
+  - target: language-polish
+    type: uses
 ---
 
 ## Overview
