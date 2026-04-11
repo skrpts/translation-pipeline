@@ -2,8 +2,8 @@
 id: "3b6294b9-1c0a-47f8-97d2-3839689dd338"
 name: "translation-pipeline"
 display_name: "Translation Pipeline"
-description: "Translates and adapts content for different locales and audiences"
-version: "1.1.5"
+description: "Translate content into multiple languages with quality review and comparative reporting"
+version: "2.0.1"
 engine: ">=1.0.0"
 
 # --- Attribution ---
@@ -20,21 +20,43 @@ tags:
   - "translation"
   - "i18n"
   - "localisation"
+  - "loops"
 
 # --- Security & Access ---
 requires:
   services:
     - "llm-service"
   permissions: []
-  data_handling: []
+  data_handling:
+    - "pii"
+
+# --- Loops ---
+loops:
+  - id: "translation-cycle"
+    mode: "for_each"
+    steps:
+      - "translation"
+      - "tone-adaptation"
+      - "language-polish"
+      - "translation-quality-review"
+    maxIterations: 20
+
+# --- Output ---
+output_step: "translation-reporting"
+composite_steps:
+  - "translation"
+  - "tone-adaptation"
+  - "translation-quality-review"
+  - "translation-reporting"
+  - "language-polish"
 
 # --- Contents ---
 contents:
-  skills: 3
-  prompts: 3
+  skills: 5
+  prompts: 5
   workflows: 1
   services: 1
   sources: 3
   documents: 0
   assets: 0
-  total: 11
+  total: 15

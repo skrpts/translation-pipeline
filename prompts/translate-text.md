@@ -2,40 +2,57 @@
 type: prompt
 id: translate-text
 title: Translate Text
-description: "Core prompt for translating text between languages"
-tags: [Production, Translation, Quality]
+description: "Translates text into the target language whilst preserving meaning, tone, and formatting"
+tags: [Production, Translation]
 inputs:
+  source_text:
+    label: "Source Text"
+    description: "The text to translate"
+    example: "Our platform helps teams ship faster. Build workflows visually."
+    required: true
+    type: text
   source_language:
     label: "Source Language"
     description: "The language of the original text"
     example: "English"
     required: true
     type: text
-  target_language:
-    label: "Target Language"
-    description: "The language to translate into"
-    example: "French"
-    required: true
-    type: text
-  source_text:
-    label: "Source Text"
-    description: "The text to analyse or process"
-    example: "[Paste the full text here]"
-    required: true
-    type: text
 connections:
   - target: translation
     type: derived_from
+metadata:
+  output_format: markdown
+  prompt_type: core
 ---
 
 ## Purpose
 
-Translates text from one language to another whilst maintaining the original tone and formatting.
+Drives the translation skill. Translates the source text into the current target language.
 
 ## Prompt
 
-Translate the following text from {{input.source_language}} to {{input.target_language}}. Maintain tone and formatting.
+You are a professional translator. Translate the text below from {{input.source_language}} into {{loop.item}}.
 
-### Inputs
+### Source Text
 
 {{input.source_text}}
+
+### Instructions
+
+1. **Translate accurately** — preserve the exact meaning of the original
+2. **Maintain formatting** — keep headings, lists, bold, links, and paragraph structure
+3. **Handle conventions** — adapt dates, numbers, currency, and units to the target locale's conventions
+4. **Preserve tone** — match the formality and voice of the original
+5. **Flag untranslatables** — if a term has no good equivalent, keep it in the original language and note it
+
+### Rules
+
+- Do not add, remove, or editoralise content — translate only
+- Preserve all markdown formatting exactly
+- If the source contains brand names or product names, keep them unchanged
+- For idioms, find a culturally equivalent expression rather than translating literally
+
+## Formatting Rules
+
+- Use the target language throughout
+- Preserve the original document structure

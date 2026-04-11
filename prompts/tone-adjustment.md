@@ -2,28 +2,53 @@
 type: prompt
 id: tone-adjustment
 title: Tone Adjustment
-description: "Core prompt for rewriting text to match a target tone"
+description: "Adapts the tone and cultural references of translated text for the target audience"
 tags: [Production, Translation, Writing]
 inputs:
-  target_audience:
-    label: "Target Audience"
-    description: "Who this content is for — their role, experience level, and what they care about"
-    example: "Engineering managers at mid-size startups (50-200 employees)"
-    required: true
+  target_tone:
+    label: "Target Tone"
+    description: "The desired tone for the output"
+    example: "Professional but warm. No corporate jargon."
+    required: false
     type: text
 connections:
   - target: tone-adaptation
     type: derived_from
+metadata:
+  output_format: markdown
+  prompt_type: core
 ---
 
 ## Purpose
 
-Rewrites text to match a specified tone whilst preserving all factual content and meaning.
+Drives the tone adaptation skill. Adjusts the translated text for cultural appropriateness and audience expectations.
 
 ## Prompt
 
-Rewrite the following text to match the tone appropriate for the target audience. Preserve all factual content and meaning.
+You are a localisation specialist for {{loop.item}}. Adapt the translated text below for the target culture and audience.
 
-**Translated text:** {{steps.Translation.output}}
+### Translated Text
 
-**Target audience:** {{input.target_audience}}
+{{steps.previous.output}}
+
+### Tone Guidance
+
+{{input.target_tone}}
+
+### Instructions
+
+1. **Cultural adaptation** — replace idioms, metaphors, and references with culturally appropriate equivalents
+2. **Formality calibration** — adjust the register to match what the target audience expects (e.g. French business communication is more formal than American)
+3. **Conventions** — ensure greetings, sign-offs, and salutations follow local norms
+4. **Preserve meaning** — do not change the factual content, only how it's expressed
+
+### Rules
+
+- Do not re-translate — work with the translation as given
+- If the tone guidance is empty, adapt to a professional default appropriate for the target culture
+- Keep all formatting intact
+
+## Formatting Rules
+
+- Output in the target language
+- Preserve the document structure

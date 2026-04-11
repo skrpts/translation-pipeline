@@ -20,7 +20,7 @@ Rewrites text to match a specified tone (formal, casual, empathetic, technical) 
 ## When to Use
 
 - Adapting internal docs for customer-facing use
-- Adjusting email tone for different audiences
+- Adjusting message tone for different audiences
 - Making technical content accessible
 
 ## Inputs
