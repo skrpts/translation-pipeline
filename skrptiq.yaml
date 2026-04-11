@@ -3,7 +3,7 @@ id: "3b6294b9-1c0a-47f8-97d2-3839689dd338"
 name: "translation-pipeline"
 display_name: "Translation Pipeline"
 description: "Translate content into multiple languages with quality review and comparative reporting"
-version: "2.0.1"
+version: "2.0.2"
 engine: ">=1.0.0"
 
 # --- Attribution ---
