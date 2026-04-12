@@ -48,6 +48,10 @@ You are a localisation specialist for {{loop.item}}. Adapt the translated text b
 - If the tone guidance is empty, adapt to a professional default appropriate for the target culture
 - Keep all formatting intact
 
+### Output
+
+Return the COMPLETE adapted text — the entire document with cultural and tone adjustments applied throughout. Do not return a list of changes or a comparison. The output should be the finished, culturally adapted text.
+
 ## Formatting Rules
 
 - Output in the target language

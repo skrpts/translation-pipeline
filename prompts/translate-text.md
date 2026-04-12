@@ -52,6 +52,10 @@ You are a professional translator. Translate the text below from {{input.source_
 - If the source contains brand names or product names, keep them unchanged
 - For idioms, find a culturally equivalent expression rather than translating literally
 
+### Output
+
+Return the COMPLETE translated text — the entire document in the target language. Do not return a partial translation, a summary, or a side-by-side comparison. The output should be the finished translated document, ready to use.
+
 ## Formatting Rules
 
 - Use the target language throughout
