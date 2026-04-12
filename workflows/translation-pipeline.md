@@ -27,16 +27,6 @@ metadata:
   loop_modes: ["for_each"]
 execution:
   - skill: "translation"
-  - skill: "tone-adaptation"
-    input_from: "translation"
-  - skill: "translation-reporting"
-    input_from: "tone-adaptation"
-  - skill: "translation-quality-review"
-    input_from: "translation-reporting"
-  - skill: "language-polish"
-    input_from: "translation-reporting"
-execution:
-  - skill: "translation"
     step_type: "content"
   - skill: "tone-adaptation"
     step_type: "content"
