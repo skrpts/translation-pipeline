@@ -30,15 +30,12 @@ execution:
     step_type: "content"
   - skill: "tone-adaptation"
     step_type: "content"
-    input_from: "translation"
   - skill: "translation-quality-review"
     step_type: "review"
-    input_from: "tone-adaptation"
   - skill: "translation-reporting"
     step_type: "synthesis"
   - skill: "language-polish"
     step_type: "content"
-    input_from: "translation-reporting"
 ---
 
 ## Overview
