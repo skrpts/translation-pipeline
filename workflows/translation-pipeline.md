@@ -25,6 +25,22 @@ metadata:
   estimated_duration: "5-30 minutes"
   trigger: manual
   loop_modes: ["for_each"]
+loops:
+  - id: "translation-cycle"
+    mode: "for_each"
+    steps:
+      - "translation"
+      - "tone-adaptation"
+      - "language-polish"
+      - "translation-quality-review"
+    maxIterations: 20
+output_step: "translation-reporting"
+composite_steps:
+  - "translation"
+  - "tone-adaptation"
+  - "translation-quality-review"
+  - "translation-reporting"
+  - "language-polish"
 execution:
   - skill: "translation"
     step_type: "content"
