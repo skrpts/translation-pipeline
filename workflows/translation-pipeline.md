@@ -46,6 +46,8 @@ execution:
     step_type: "content"
   - skill: "tone-adaptation"
     step_type: "content"
+    context:
+      target_tone: "Professional and approachable"
   - skill: "translation-quality-review"
     step_type: "review"
   - skill: "translation-reporting"
