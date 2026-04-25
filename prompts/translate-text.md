@@ -10,7 +10,8 @@ inputs:
     description: "The text to translate"
     example: "Our platform helps teams ship faster. Build workflows visually."
     required: true
-    type: text
+    type: file
+    accept: ".txt,.md,.docx"
   source_language:
     label: "Source Language"
     description: "The language of the original text"

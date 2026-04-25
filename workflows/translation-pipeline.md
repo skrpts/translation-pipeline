@@ -44,6 +44,7 @@ composite_steps:
 execution:
   - skill: "translation"
     step_type: "content"
+    prompt: "translation-brief"
   - skill: "tone-adaptation"
     step_type: "content"
     context:

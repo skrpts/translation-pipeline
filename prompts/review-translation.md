@@ -10,7 +10,8 @@ inputs:
     description: "The original text that was translated"
     example: "[Paste the original source text here]"
     required: true
-    type: text
+    type: file
+    accept: ".txt,.md,.docx"
 connections:
   - target: translation-quality-review
     type: derived_from
