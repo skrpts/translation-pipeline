@@ -46,14 +46,18 @@ execution:
     step_type: "content"
     prompt: "translation-brief"
   - skill: "tone-adaptation"
+    prompt: "tone-adjustment"
     step_type: "content"
     context:
       target_tone: "Professional and approachable"
   - skill: "translation-quality-review"
+    prompt: "review-translation"
     step_type: "review"
   - skill: "translation-reporting"
+    prompt: "report-translations"
     step_type: "synthesis"
   - skill: "language-polish"
+    prompt: "polish-language"
     step_type: "content"
 ---
 
