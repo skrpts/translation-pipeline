@@ -28,6 +28,7 @@ metadata:
 loops:
   - id: "translation-cycle"
     mode: "for_each"
+    inputExpression: "{{input.target_languages}}"
     steps:
       - "translation"
       - "tone-adaptation"
