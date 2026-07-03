@@ -3,7 +3,7 @@ id: "3b6294b9-1c0a-47f8-97d2-3839689dd338"
 name: "translation-pipeline"
 display_name: "Translation Pipeline"
 description: "Translate content into multiple languages with quality review and comparative reporting"
-version: "2.0.20"
+version: "2.0.21"
 engine: ">=0.1.0"
 
 # --- Attribution ---
@@ -70,3 +70,17 @@ contents:
   documents: 0
   assets: 0
   total: 9
+
+security:
+  status: "pass"
+  scanned_at: "2026-07-03T11:11:08.125Z"
+  scanner_version: "3.3.0"
+  syntactic: "pass"
+  structural: "pass"
+  detected:
+    services: ["llm-service"]
+    permissions: []
+    data_handling: []
+  undeclared: []
+  warnings: []
+  report_url: "https://hub.skrptiq.ai/skrpts/translation-pipeline/security"

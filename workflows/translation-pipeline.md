@@ -46,20 +46,25 @@ execution:
   - skill: "translation"
     step_type: "content"
     prompt: "translation-brief"
+    output: { name: "translation", type: "text" }
   - skill: "tone-adaptation"
     prompt: "tone-adjustment"
     step_type: "content"
+    output: { name: "toned_translation", type: "text" }
     context:
       target_tone: "Professional and approachable"
   - skill: "translation-quality-review"
     prompt: "review-translation"
     step_type: "review"
+    output: { name: "quality_review", type: "text" }
   - skill: "translation-reporting"
     prompt: "report-translations"
     step_type: "synthesis"
+    output: { name: "translation_report", type: "text" }
   - skill: "language-polish"
     prompt: "polish-language"
     step_type: "content"
+    output: { name: "polished_translation", type: "text" }
     context:
       voice_profile: "Neutral professional tone"
       grammar_strictness: "Professional"
