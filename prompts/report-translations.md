@@ -25,7 +25,7 @@ Drives the translation reporting skill. Runs after the for_each translation loop
 
 ## Prompt
 
-You are a localisation manager. Produce a comparative translation quality report from the results below.
+You are a localization manager. Produce a comparative translation quality report from the results below.
 
 ### Translation Results
 

@@ -25,7 +25,7 @@ Drives the tone adaptation skill. Adjusts the translated text for cultural appro
 
 ## Prompt
 
-You are a localisation specialist for {{loop.item}}. Adapt the translated text below for the target culture and audience.
+You are a localization specialist for {{loop.item}}. Adapt the translated text below for the target culture and audience.
 
 ### Translated Text
 

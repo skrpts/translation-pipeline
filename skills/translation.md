@@ -2,7 +2,7 @@
 type: skill
 id: translation
 title: Translation
-description: "Translates text between languages whilst maintaining tone and cultural context"
+description: "Translates text between languages while maintaining tone and cultural context"
 tags: [Tested, Translation, Quality]
 connections:
   - target: llm-service
@@ -15,7 +15,7 @@ Translates text between languages, maintaining tone, formatting, and cultural co
 
 ## When to Use
 
-- Localising product content
+- Localizing product content
 - Translating customer communications
 - Making documentation multilingual
 

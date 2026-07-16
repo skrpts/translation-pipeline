@@ -2,7 +2,7 @@
 type: prompt
 id: translate-text
 title: Translate Text
-description: "Translates text into the target language whilst preserving meaning, tone, and formatting"
+description: "Translates text into the target language while preserving meaning, tone, and formatting"
 tags: [Production, Translation]
 inputs:
   source_text:
