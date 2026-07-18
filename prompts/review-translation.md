@@ -12,6 +12,12 @@ inputs:
     required: true
     type: file
     accept: ".txt,.md,.docx"
+context_params:
+  translated_text:
+    label: "Translated Text"
+    description: "The finished translation to review — the tone-adapted, polished target-language text."
+    required: false
+    default_from_previous: true
 connections:
   - target: translation-quality-review
     type: derived_from
@@ -34,7 +40,7 @@ You are a professional translation reviewer. Evaluate the translation below for 
 
 ### Translation ({{loop.item}})
 
-{{steps.previous.output}}
+{{step.context.translated_text}}
 
 ### Instructions
 

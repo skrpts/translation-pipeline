@@ -1,5 +1,8 @@
 # Release Notes
 
+## v2.1.0
+GH#863 Wave 2 (K-045 intent/output-mismatch fix) — wire the never-invoked `translate-text` prompt so the pipeline actually translates. Previously the "translation" step ran only `translation-brief` (a brief, not a translation) and every downstream step consumed the brief. Added a new `text-translation` backing skill and execution step that runs `translate-text` after the brief; rewired tone-adaptation, language-polish, and quality-review to consume the real translation via explicit `from_step` bindings. Re-pinned the `polish-language` shared dep to v1.0.6 and bound its `source`. Contents: skills 3→4, total 9→10.
+
 ## v2.0.22
 GH#845 — republish with American English (en-US) content, completing the source-only GH#805 flip that never reached the Hub. Copy only — no functional or behaviour change.
 

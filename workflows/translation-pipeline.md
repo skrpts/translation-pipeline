@@ -7,6 +7,8 @@ tags: [Production, Customer-Facing, Translation, Loop]
 connections:
   - target: translation
     type: uses
+  - target: text-translation
+    type: uses
   - target: tone-adaptation
     type: uses
   - target: translation-quality-review
@@ -31,6 +33,7 @@ loops:
     inputExpression: "{{input.target_languages}}"
     steps:
       - "translation"
+      - "text-translation"
       - "tone-adaptation"
       - "language-polish"
       - "translation-quality-review"
@@ -38,6 +41,7 @@ loops:
 output_step: "translation-reporting"
 composite_steps:
   - "translation"
+  - "text-translation"
   - "tone-adaptation"
   - "translation-quality-review"
   - "translation-reporting"
@@ -46,21 +50,25 @@ execution:
   - skill: "translation"
     step_type: "content"
     prompt: "translation-brief"
+    output: { name: "translation_brief", type: "text" }
+  - skill: "text-translation"
+    prompt: "translate-text"
+    step_type: "content"
     output: { name: "translation", type: "text" }
+    bindings:
+      translation_brief:
+        from_step: "Translation"
+        field: output
   - skill: "tone-adaptation"
     prompt: "tone-adjustment"
     step_type: "content"
     output: { name: "toned_translation", type: "text" }
     context:
       target_tone: "Professional and approachable"
-  - skill: "translation-quality-review"
-    prompt: "review-translation"
-    step_type: "review"
-    output: { name: "quality_review", type: "text" }
-  - skill: "translation-reporting"
-    prompt: "report-translations"
-    step_type: "synthesis"
-    output: { name: "translation_report", type: "text" }
+    bindings:
+      translated_text:
+        from_step: "Text Translation"
+        field: output
   - skill: "language-polish"
     prompt: "polish-language"
     step_type: "content"
@@ -68,6 +76,22 @@ execution:
     context:
       voice_profile: "Neutral professional tone"
       grammar_strictness: "Professional"
+    bindings:
+      source:
+        from_step: "Tone Adaptation"
+        field: output
+  - skill: "translation-quality-review"
+    prompt: "review-translation"
+    step_type: "review"
+    output: { name: "quality_review", type: "text" }
+    bindings:
+      translated_text:
+        from_step: "Language Polish"
+        field: output
+  - skill: "translation-reporting"
+    prompt: "report-translations"
+    step_type: "synthesis"
+    output: { name: "translation_report", type: "text" }
 ---
 
 ## Overview
@@ -80,19 +104,23 @@ This workflow translates content into multiple languages using a **for_each** lo
 
 The loop iterates over the list of target languages. For each language:
 
-**Step 1 — Translate**
+**Step 1 — Translation Brief**
 
-Translates the source text into `{{loop.item}}` (the current target language), preserving formatting, structure, and meaning. Handles locale-specific conventions for dates, numbers, and units.
+Prepares the translation brief for `{{loop.item}}` (the current target language): target language, tone guidance, and notes on glossary or untranslatable terms. This brief guides the actual translation.
 
-**Step 2 — Adapt Tone**
+**Step 2 — Translate**
+
+Produces the actual translation of the source text into `{{loop.item}}`, guided by the brief, preserving formatting, structure, and meaning. Handles locale-specific conventions for dates, numbers, and units.
+
+**Step 3 — Adapt Tone**
 
 Adjusts the translated content for the target culture's communication norms. Modifies formality level, idioms, and references to be culturally appropriate.
 
-**Step 3 — Polish Language**
+**Step 4 — Polish Language**
 
-Surface-level polish of the translated text — fixes grammar, spelling, and punctuation in the target language.
+Surface-level polish of the tone-adapted translation — fixes grammar, spelling, and punctuation in the target language.
 
-**Step 4 — Quality Review**
+**Step 5 — Quality Review**
 
 Back-translates the output to the source language and compares against the original. Scores accuracy, fluency, cultural fit, register, and completeness. Produces a structured quality assessment with specific issues.
 
@@ -133,7 +161,7 @@ After all languages are processed, the reporting step receives all quality revie
 
 ## Provider Notes
 
-- Each language iteration runs 4 AI calls (translate + adapt + polish + review). 5 languages = 20 calls plus the report.
+- Each language iteration runs 5 AI calls (brief + translate + adapt + polish + review). 5 languages = 25 calls plus the report.
 - Multilingual capability varies by model — test with your specific language pairs
 - For best results, use a model with strong multilingual training
 - Quality review uses back-translation, which doubles the translation work but catches meaning drift

@@ -11,6 +11,12 @@ inputs:
     example: "Professional but warm. No corporate jargon."
     required: false
     type: text
+context_params:
+  translated_text:
+    label: "Translated Text"
+    description: "The actual translation produced by the translation step."
+    required: false
+    default_from_previous: true
 connections:
   - target: tone-adaptation
     type: derived_from
@@ -29,7 +35,7 @@ You are a localization specialist for {{loop.item}}. Adapt the translated text b
 
 ### Translated Text
 
-{{steps.previous.output}}
+{{step.context.translated_text}}
 
 ### Tone Guidance
 

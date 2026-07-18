@@ -18,8 +18,14 @@ inputs:
     example: "English"
     required: true
     type: text
+context_params:
+  translation_brief:
+    label: "Translation Brief"
+    description: "The translation brief — target language, tone, and glossary guidance from the brief step."
+    required: false
+    default_from_previous: true
 connections:
-  - target: translation
+  - target: text-translation
     type: derived_from
 metadata:
   output_format: markdown
@@ -37,6 +43,10 @@ You are a professional translator. Translate the text below from {{input.source_
 ### Source Text
 
 {{input.source_text}}
+
+### Translation Brief
+
+{{step.context.translation_brief}}
 
 ### Instructions
 
